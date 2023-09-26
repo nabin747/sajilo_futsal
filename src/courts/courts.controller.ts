@@ -15,7 +15,6 @@ export class CourtsController {
   @UseGuards(JwtAuthGuard)
   async create(@Body() createCourtDto: CreateCourtDto,@CurrentUser() currentUser) {
     const logInUser = await this.authService.getLoginIn(currentUser.email);
-    
     return await this.courtsService.create(createCourtDto,logInUser);
   }
 

@@ -22,12 +22,7 @@ export class CourtsService {
 
   async findAll(currentUser: any) {
     const userInfo = await this.authService.getLoginIn(currentUser.email);
-    console.log(
-      '🚀 ~ file: courts.service.ts:25 ~ CourtsService ~ findAll ~ userInfo:',
-      userInfo,
-    );
     const userId = userInfo.id;
-    // console.log("🚀 ~ file: courts.service.ts:25 ~ CourtsService ~ findAll ~ userInfo:", userInfo)
     return await this.courtService
       .createQueryBuilder('courts')
       .leftJoinAndSelect('courts.createdBy', 'users')
@@ -47,7 +42,6 @@ export class CourtsService {
 
       ])
       .getMany();
-    // return await this.courtService.find({relations:{createdBy:true}});
   }
 
   findOne(id: number) {

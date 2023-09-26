@@ -5,6 +5,11 @@ import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 import { DatabaseModule } from './database/database.config';
 import { AuthModule } from './auth/auth.module';
+import { AddressModule } from './address/address.module';
+import { ImagesCourtModule } from './images-court/images-court.module';
+import { BookingsModule } from './bookings/bookings.module';
+import { TimeSlotsModule } from './time-slots/time-slots.module';
+import { SlotAvailabilityModule } from './slot-availability/slot-availability.module';
 
 @Module({
   imports: [
@@ -26,6 +31,11 @@ import { AuthModule } from './auth/auth.module';
     UsersModule,
     CourtsModule,
     AuthModule,
+    AddressModule,
+    ImagesCourtModule,
+    BookingsModule,
+    TimeSlotsModule,
+    SlotAvailabilityModule,
   ],
   controllers: [],
   providers: [],
