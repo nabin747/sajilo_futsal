@@ -25,6 +25,7 @@ export class CourtsController {
   }
 
   @Get(':id')
+  @UseGuards(JwtAuthGuard)
   findOne(@Param('id') id: string) {
     return this.courtsService.findOne(+id);
   }

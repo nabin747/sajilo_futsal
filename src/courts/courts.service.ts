@@ -5,13 +5,14 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Court } from './entities/court.entity';
 import { Repository } from 'typeorm';
 import { AuthService } from 'src/auth/auth.service';
+import { Address } from 'src/address/entities/address.entity';
 
 @Injectable()
 export class CourtsService {
   constructor(
     @InjectRepository(Court)
     private readonly courtService: Repository<Court>,
-    private readonly authService: AuthService,
+   private readonly authService: AuthService,
   ) {}
   async create(createCourtDto: CreateCourtDto, userDetail: any) {
     const createdBy = userDetail;
@@ -45,7 +46,9 @@ export class CourtsService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} court`;
+    return this.courtService.find({where:{
+      id:id
+    }});
   }
 
   update(id: number, updateCourtDto: UpdateCourtDto) {
