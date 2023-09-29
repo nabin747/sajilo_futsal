@@ -1,4 +1,6 @@
-import { IsNotEmpty } from "class-validator";
+import { Type } from "class-transformer";
+import { IsDefined, IsNotEmpty, IsObject, ValidateNested } from "class-validator";
+import { CreateAddressDto } from "src/address/dto/create-address.dto";
 
 export class CreateCourtDto {
 
@@ -14,4 +16,10 @@ export class CreateCourtDto {
 
     // @IsNotEmpty()
     primaryImageUrl:string;
+
+    @ValidateNested({each:true})
+    @IsDefined()
+    @Type(()=>CreateAddressDto)
+    address: CreateAddressDto 
+
 }
